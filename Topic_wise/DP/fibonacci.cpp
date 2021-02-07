@@ -10,6 +10,7 @@ long long int fib(long long int n){
   }
   return memo[n];
 }
+
 int main(){
   int n;
   cin>>n;

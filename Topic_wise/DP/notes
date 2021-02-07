@@ -1,0 +1,16 @@
+How to do Memoization?
+
+1. Write a recursive solution:
+    Visualise the problem as a tree
+    Shrink the problem into sub-problems
+    Implement the tree using recursive: 
+        Leaves : base case
+    Test the code for small inputs
+
+2. Make it efficient 
+    Add a memo object: 
+        Keys: args to the function
+        Values: return values
+    Memo object should be shared among all recursive calls
+    Add a new base case to return memo object
+    Implement memo storage: Before returning, store the result in memo.

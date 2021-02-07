@@ -3,7 +3,7 @@
 
 // notes
 // grid(a,b) = grid(b,a)
-
+// Time: O(n*m) 
 #include <iostream>
 using namespace std;
 
