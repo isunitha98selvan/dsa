@@ -1,25 +1,24 @@
-// Given a target sum and an array of numbers, return whether the target sum can be generated
-// using those numbers. You can use the same number multiple times.
-// All numbers are non-negative.
-
-//Runtime: O(m*n)
-
 #include <iostream>
+#include <unordered_map>
 using namespace std;
 
-int memo[100] = {-1};
+bool canSumUtil(int target, int n, int arr[n], unordered_map<int,bool>&memo);
 
 bool can_sum(int target, int n, int arr[n]){
-    if(memo[target]!=-1)
+    unordered_map<int,bool> memo;
+    return canSumUtil(target,n,arr,memo);
+}
+
+bool canSumUtil(int target, int n, int arr[n], unordered_map<int,bool>&memo){
+    if(memo.find(target)!=memo.end())   
         return memo[target];
-    if(target==0)
-        return true;
-    if(target<0)
-        return false;
+    if(target==0) return true;
+    if(target<0) return false;
+    
     for(int i=0;i<n;i++){
-        int rem = target-arr[i];
-        if(can_sum(rem,n,arr)) {
-            memo[target]=true;
+        int rem = target - arr[i];
+        if(canSumUtil(rem,n,arr,memo)){
+            memo[target]= true;
             return true;
         }
     }
@@ -32,9 +31,6 @@ int main(){
     int arr[n];
     for(int i=0;i<n;i++){
         cin>>arr[i];
-    }
-    for(int i=0;i<100;i++){
-        memo[i] = -1;
     }
     int target;
     cin>>target;
